@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinReader.Themes.DarkThemeResources">
+  <ContentView.Resources>
+    <ResourceDictionary>
+      <x:String x:Key="BackgroundColor">Black</x:String>
+      <x:String x:Key="ForegroundColor">#bdc3c7</x:String>
+      <x:String x:Key="HeaderBackgroundColor">#20202a</x:String>
+      <x:String x:Key="HeaderForegroundColor">#bdc3c7</x:String>
+      <x:String x:Key="HeaderLogoColor">#1abc9c</x:String>
+      <x:String x:Key="ListItemBackgroundColor">#1c1c1c</x:String>
+      <x:String x:Key="ListItemTitleColor">#2980b9</x:String>
+    </ResourceDictionary>
+  </ContentView.Resources>
+</ContentView>

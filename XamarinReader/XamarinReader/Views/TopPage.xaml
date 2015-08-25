@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinReader.Views.TopPage"
+             x:Name="root"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Path=ViewModel, Source={x:Reference Name=root}}">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                    iOS="0,20,0,0"/>
+    </ContentPage.Padding>
+    
+    <StackLayout Orientation="Vertical"
+                 Spacing="10">
+        <!--Header-->
+        <StackLayout Orientation="Horizontal"
+                     Padding="15,5"
+                     BackgroundColor="{StaticResource HeaderBackgroundColor}"
+                     Spacing="5">
+            <Label Text="TechCrunch"
+                   TextColor="{StaticResource HeaderLogoColor}"
+                   FontSize="Medium"/>
+            <Label Text="Reader"
+                   TextColor="{StaticResource HeaderForegroundColor}"
+                   FontSize="Medium"/>
+        </StackLayout>
+
+        <!--List-->
+        <ListView ItemsSource="{Binding Items}"
+                  SeparatorColor="Transparent"
+                  HasUnevenRows="True"
+                  IsRefreshing="{Binding IsRefresing}"
+                  IsPullToRefreshEnabled="True"
+                  ItemSelected="OnListItemSelected"
+                  RefreshCommand="{Binding RefreshCommand}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Translate"
+                                      Command="{Binding TranslateCommand}"
+                                      CommandParameter="{Binding}"/>
+                            <MenuItem Text="Read more"
+                                      Command="{Binding LaunchLinkUriCommand}"
+                                      CommandParameter="{Binding}"/>
+                        </ViewCell.ContextActions>
+                        
+                        <!--ListItem-->
+                        <StackLayout Orientation="Vertical"
+                                     Spacing="0"
+                                     Padding="15,10">
+                            
+                            <Image Source="{Binding Thumbnail}"
+                                   HeightRequest="150"
+                                   VerticalOptions="StartAndExpand"
+                                   Aspect="AspectFill"/>
+                            
+                            <StackLayout Orientation="Vertical"
+                                         Padding="10"
+                                         BackgroundColor="{StaticResource ListItemBackgroundColor}"
+                                         Spacing="10">
+                                <Label Text="{Binding Title}"
+                                       TextColor="{StaticResource ListItemTitleColor}"
+                                       FontSize="Medium"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding Description}"
+                                       TextColor="{StaticResource ForegroundColor}"
+                                       FontSize="Small"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </StackLayout>
+</ContentPage>
